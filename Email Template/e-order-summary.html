@@ -1,0 +1,610 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <title>Trac - Email order summary</title>
+    <style>
+      /* -------------------------------------
+          GLOBAL RESETS
+      ------------------------------------- */
+      img {
+        border: none;
+        -ms-interpolation-mode: bicubic;
+        max-width: 100%; }
+
+      body {
+        background-color: #f6f6f6;
+        font-family:'Roboto Condensed', Helvetica,Arial,sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 14px;
+        line-height: 18px;
+        margin: 0;
+        padding: 0;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%; }
+
+      table {
+        border-collapse: separate;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+        width: 100%; }
+        table td {
+            font-family:'Roboto Condensed', Helvetica,Arial,sans-serif;
+          font-size: 14px;
+          vertical-align: top; }
+
+      /* -------------------------------------
+          BODY & CONTAINER
+      ------------------------------------- */
+
+      .body {
+        background-color: #f6f6f6;
+        width: 100%; }
+
+      /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+      .container {
+        display: block;
+        Margin: 0 auto !important;
+        /* makes it centered */
+        max-width: 580px;
+        padding: 10px;
+        width: 580px; }
+
+      /* This should also be a block element, so that it will fill 100% of the .container */
+      .content {
+        box-sizing: border-box;
+        display: block;
+        Margin: 0 auto;
+        max-width: 580px;
+        padding: 10px; }
+
+      /* -------------------------------------
+          HEADER, FOOTER, MAIN
+      ------------------------------------- */
+      .main {
+        background: #ffffff;
+        border-radius: 3px;
+        width: 100%; }
+
+      .wrapper {
+        box-sizing: border-box;
+        padding: 20px; }
+
+      .content-block {
+        padding-bottom: 10px;
+        padding-top: 10px;
+      }
+
+      .footer {
+        clear: both;
+        Margin-top: 10px;
+        text-align: center;
+        width: 100%; }
+        .footer td,
+        .footer p,
+        .footer span,
+        .footer a {
+          color: #999999;
+          font-size: 12px;
+          text-align: center; }
+
+      /* -------------------------------------
+          TYPOGRAPHY
+      ------------------------------------- */
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: #000000;
+        font-family:'Roboto Condensed', Helvetica,Arial,sans-serif;
+        font-weight: 400;
+        line-height: 1.4;
+        margin: 0;
+        Margin-bottom: 30px; }
+
+      h1 {
+        font-size: 35px;
+        font-weight: 300;
+        text-align: center;
+        text-transform: capitalize; }
+
+      p,
+      ul,
+      ol {
+        font-family:'Roboto Condensed', Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+        Margin-bottom: 15px; }
+        p li,
+        ul li,
+        ol li {
+          list-style-position: inside;
+          margin-left: 5px; }
+
+      a {
+        color: #3498db;
+        text-decoration: underline; }
+
+      /* -------------------------------------
+          BUTTONS
+      ------------------------------------- */
+      .btn {
+        box-sizing: border-box;
+        width: 100%; }
+        .btn > tbody > tr > td {
+          padding-bottom: 15px; }
+        .btn table {
+          width: auto; }
+        .btn table td {
+          background-color: #ffffff;
+          border-radius: 5px;
+          text-align: center; }
+        .btn a {
+          background-color: #ffffff;
+          border: solid 1px #3498db;
+          border-radius: 5px;
+          box-sizing: border-box;
+          color: #3498db;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 14px;
+          font-weight: bold;
+          margin: 0;
+          padding: 12px 25px;
+          text-decoration: none;
+          text-transform: capitalize; }
+
+      .btn-primary table td {
+        background-color: #3498db; }
+
+      .btn-primary a {
+        background-color: #3498db;
+        border-color: #3498db;
+        color: #ffffff; }
+
+      /* -------------------------------------
+          OTHER STYLES THAT MIGHT BE USEFUL
+      ------------------------------------- */
+      .last {
+        margin-bottom: 0; }
+
+      .first {
+        margin-top: 0; }
+
+      .align-center {
+        text-align: center; }
+
+      .align-right {
+        text-align: right; }
+
+      .align-left {
+        text-align: left; }
+
+      .clear {
+        clear: both; }
+
+      .mt0 {
+        margin-top: 0; }
+
+      .mb0 {
+        margin-bottom: 0; }
+
+      .preheader {
+        color: transparent;
+        display: none;
+        height: 0;
+        max-height: 0;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        mso-hide: all;
+        visibility: hidden;
+        width: 0; }
+
+      .powered-by a {
+        text-decoration: none; }
+
+      hr {
+        border: 0;
+        border-bottom: 1px solid #f6f6f6;
+        Margin: 20px 0; }
+
+        .header-container
+        {
+            float: right;
+            height: 30px;
+        }
+        .footer-container
+        {
+            padding-top:20px;
+        }
+        .header-triangle
+        {
+            width: 0px;
+            height: 0px;
+            background-color: #1f4599;
+            float: right;
+            border-right: solid 20px #1f4599;
+            border-top: solid 20px #1f4599;
+            border-left: solid 20px white;
+            border-bottom: solid 20px white;
+            position: relative;
+            top: -22px;
+            left: 22px;
+        }
+        .header-bar
+        {
+            width: 200px;
+            height: 40px;
+            background-color: #1f4599;
+            float: right;
+            position: relative;
+            top: -22px;
+            left: 22px;
+        }
+        .header-image
+        {
+            width: 100px;
+        }
+        .footer-image
+        {
+            width: 580px;
+            height: 63px;
+        }
+        h1
+        {
+            color: #1f4599;
+        }
+        h2
+        {
+            color: #1f4599;
+        }
+        h3
+        {
+            font-weight: lighter;
+        }
+        .header-table
+        {
+            width: 100%;
+        }
+        .header-table tr td
+        {
+            width: 20%;
+        }
+        .header-text
+        {
+            font-weight: lighter;
+        }
+        .price-table
+        {
+            width: 100%;
+        }
+        .price-table tr td
+        {
+            /* padding-bottom: 5px; */
+        }
+        .price-left-column
+        {
+            width: 80%;
+        }
+        .price-rp-column
+        {
+            width: 5%;
+        }
+        .price-right-column
+        {
+            width: 10%;
+            text-align: right;
+        }
+        .totalprice-container
+        {
+            background-color: #E8E2DF;
+            height: 40px;
+        }
+        .totalprice-header
+        {
+            margin-top: 5px;
+            margin-left: 10px;
+            display: inline-block;
+        }
+        .totalprice-value
+        {
+            margin-left: 15px;
+            margin-top: 5px;
+            color: white;
+            display: inline-block;
+        }
+        .price-triangle
+        {
+            width: 0px;
+            height: 0px;
+            background-color: #EB782D;
+            float: right;
+            border-right: solid 20px #EB782D;
+            border-top: solid 20px #E8E2DF;
+            border-left: solid 20px #E8E2DF;
+            border-bottom: solid 20px #EB782D;
+        }
+        .price-bar
+        {
+            width: 200px;
+            height: 40px;
+            background-color: #EB782D;
+            float: right;
+        }
+        .detail-table
+        {
+            width: 100%;
+        }
+        .detail-table tr td
+        {
+            vertical-align: top;
+            padding: 5px 5px 10px 5px;
+        }
+        .orange-color
+        {
+            color:#EB782D;
+        }
+        .term-text
+        {
+            font-weight: lighter;
+            font-size: 11px;
+            font-style: oblique;
+        }
+
+      /* -------------------------------------
+          RESPONSIVE AND MOBILE FRIENDLY STYLES
+      ------------------------------------- */
+      @media only screen and (max-width: 620px) {
+        table[class=body] h1 {
+          font-size: 28px !important;
+          margin-bottom: 10px !important; }
+        table[class=body] p,
+        table[class=body] ul,
+        table[class=body] ol,
+        table[class=body] td,
+        table[class=body] span,
+        table[class=body] a {
+          font-size: 16px !important; }
+        table[class=body] .wrapper,
+        table[class=body] .article {
+          padding: 10px !important; }
+        table[class=body] .content {
+          padding: 0 !important; }
+        table[class=body] .container {
+          padding: 0 !important;
+          width: 100% !important; }
+        table[class=body] .main {
+          border-left-width: 0 !important;
+          border-radius: 0 !important;
+          border-right-width: 0 !important; }
+        table[class=body] .btn table {
+          width: 100% !important; }
+        table[class=body] .btn a {
+          width: 100% !important; }
+        table[class=body] .img-responsive {
+          height: auto !important;
+          max-width: 100% !important;
+          width: auto !important; }}
+
+      /* -------------------------------------
+          PRESERVE THESE STYLES IN THE HEAD
+      ------------------------------------- */
+      @media all {
+        .ExternalClass {
+          width: 100%; }
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+          line-height: 100%; }
+        .apple-link a {
+          color: inherit !important;
+          font-family: inherit !important;
+          font-size: inherit !important;
+          font-weight: inherit !important;
+          line-height: inherit !important;
+          text-decoration: none !important; }
+        .btn-primary table td:hover {
+          background-color: #34495e !important; }
+        .btn-primary a:hover {
+          background-color: #34495e !important;
+          border-color: #34495e !important; } }
+
+    </style>
+  </head>
+  <body class="">
+    <table border="0" cellpadding="0" cellspacing="0" class="body">
+      <tr>
+        <td>&nbsp;</td>
+        <td class="container">
+          <div class="content">
+
+            <!-- START CENTERED WHITE CONTAINER -->
+            <table class="main">
+
+              <!-- START MAIN CONTENT AREA -->
+              <tr>
+                <td class="wrapper" style="overflow:hidden">
+                    <div class="header-bar"></div>
+                    <div class="header-triangle" width="200"></div>
+                  <table border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td>
+                          
+                          <img src="brand.png" class="header-image" width="100" alt="trac">
+                          <div>
+                              <h2 style="text-align:left; margin-bottom:0; margin-top:20px;">
+                                Thank you for using our services!
+                              </h2>
+                              <h3>Here is your order summary:</h3>
+                              <strong style="color:#1f419b; font-size:18px; display:block; margin-bottom:10px;">
+                                  Cost summary
+                              </strong>
+                              <table class="price-table">
+                                  <tr>
+                                      <td class="header-text price-left-column">Package Price :</td>
+                                      <td class="price-rp-column"><b>Rp. </b></td>
+                                      <td class="price-right-column"><b>1.330.000,00</b></td>
+                                  </tr>
+                                  <tr>
+                                      <td class="header-text price-left-column">Additional Hour Price :</td>
+                                      <td class="price-rp-column"><b>Rp. </b></td>
+                                      <td class="price-right-column"><b>1.000,00</b></td>
+                                  </tr>
+                                  <tr>
+                                      <td class="header-text price-left-column">Additional Trip :</td>
+                                      <td class="price-rp-column"><b>Rp. </b></td>
+                                      <td class="price-right-column"><b>0,00</b></td>
+                                  </tr>
+                                  <tr>
+                                      <td class="header-text price-left-column">Additional OLC (Overnight Lodging Cost) :</td>
+                                      <td class="price-rp-column"><b>Rp. </b></td>
+                                      <td class="price-right-column"><b>0,00</b></td>
+                                  </tr>
+                                  <tr>
+                                      <td class="header-text price-left-column">VAT :</td>
+                                      <td class="price-rp-column"><b>Rp. </b></td>
+                                      <td class="price-right-column"><b>133.000,00</b></td>
+                                  </tr>
+                              </table>
+                              <br>
+                              <div class="totalprice-container">
+                                  <strong class="totalprice-header" style="margin-top:10px;color:#1f419b; font-size:14px;">
+                                      Total Price (Incl VAT) :
+                                  </strong>
+                                  <div class="price-bar" style="text-align:right;">
+                                    <strong class="totalprice-value" style="margin-top:10px; margin-right:15px; font-size:18px;">
+                                        Rp. 1.464.000,00
+                                    </strong>
+                                  </div>
+                                  <div class="price-triangle">
+                                  </div>
+                              </div>
+                              <br>
+
+                              <strong style="color:#1f419b; font-size:18px; display:block; margin-bottom:10px;">Booking detail</strong>
+                              <table class="detail-table">
+                                      <tr>
+                                          <td style="width:33.3%">
+                                              <span class="header-text">Order Date Time</span><br>
+                                              <b>Thursday, 14 Dec 2017 09:00:00</b>
+                                          </td>
+                                          <td style="width:33.3%">
+                                              <span class="header-text">Passenger Name</span><br>
+                                              <b>Mr. Rendy Aridana</b>
+                                          </td>
+                                          <td style="width:33.3%">
+                                              <span class="header-text">Requester</span><br>
+                                              <b>Other Employee</b>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <span class="header-text">Order ID</span><br>
+                                              <b>TRCMOBILE1712087909</b>
+                                          </td>
+                                          <td>
+                                              <span class="header-text">Email</span><br>
+                                              <b>rendy.aridana@sampoerna.com</b>
+                                          </td>
+                                          <td>
+                                              <span class="header-text">Order Type</span><br>
+                                              <b>Out of Town Overnight</b>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <span class="header-text">SO SAP Number</span><br>
+                                              <b>2130276983 / 4070042692</b>
+                                          </td>
+                                          <td>
+                                              <span class="header-text">Phone Number</span><br>
+                                              <b>08773542669</b>
+                                          </td>
+                                          <td>
+                                              <span class="header-text">Order Status</span><br>
+                                              <b class="orange-color">Completed</b>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <span class="header-text">Package</span><br>
+                                              <b>13 Hours</b>
+                                          </td>
+                                          <td>
+                                              <span class="header-text">Cost Center</span><br>
+                                              <b>PT HM Sampoerna tbk</b>
+                                          </td>
+                                          <td>
+                                              <span class="header-text">Additional Hour(s)</span><br>
+                                              <b class="orange-color">1 Hour</b>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <span class="header-text">Pick Up Point</span><br>
+                                              <b>Chandra Kirana Regency, No. 121E Jalan Kebon Agung, Watugede, Malang, East Java, Indonesia 12542</b>
+                                          </td>
+                                          <td>
+                                              <span class="header-text">Destination</span><br>
+                                              <b>Grha TRAC, Jl. Condet Raya No. 15, Gedong, Pasar Rebo. 12356</b>
+                                          </td>
+                                          <td></td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <span class="header-text">Pick Up Detail</span><br>
+                                              <b>Sebrang Alfamidi, Sebelah SMK 1 Jakarta</b>
+                                          </td>
+                                          <td></td>
+                                          <td></td>
+                                      </tr>
+                              </table>
+                              <br>
+
+                              <strong style="color:#1f419b; font-size:18px; display:block; margin-bottom:10px;">Driver & car detail</strong>
+                              <table class="header-table">
+                                      <tr>
+                                          <td class="header-text" style="width:20%">Driver Name</td>
+                                          <td class="header-text" style="width:20%">Driver Code</td>
+                                          <td class="header-text" style="width:20%">Contact</td>
+                                          <td class="header-text" style="width:20%">Plate Number</td>
+                                          <td class="header-text" style="width:20%">Driver Code</td>
+                                      </tr>
+                                      <tr>
+                                          <td><b>Eko Hendri Purwanto</b></td>
+                                          <td><b>20004096</b></td>
+                                          <td><b>081233132095</b></td>
+                                          <td><b>Innova</b></td>
+                                          <td><b>N 952 BS</b></td>
+                                      </tr>
+                              </table>
+                              <br>
+                              <p class="term-text">Please double check end order time in apps and this invoice after you finished order and you have to confirm it.</p>
+                          </div>
+                          <div class="footer-container" style="margin-bottom:-26px; margin-left:-22px; margin-right:-22px;">
+                            <img src="footer.png" class="footer-image" alt="contact us">
+                          </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+            <!-- END MAIN CONTENT AREA -->
+            </table>
+
+          <!-- END CENTERED WHITE CONTAINER -->
+          </div>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </body>
+</html>
